@@ -2,7 +2,7 @@
 
 # VE SGTF
 
-setwd("/rivm/n/andewegs/Documents/SARS-CoV-2/05_VE_omicron_BA.1_Delta/SARS-CoV-2_Protection_SGTF_Delta_Omicron_BA1_BA2/")
+setwd("/PATH/SARS-CoV-2_Protection_SGTF_Delta_Omicron_BA1_BA2/")
 
 ## packages
 lapply(c("rlang", "tidyverse","tidytable", "lubridate", "janitor", "cowplot", "VGAM", 
