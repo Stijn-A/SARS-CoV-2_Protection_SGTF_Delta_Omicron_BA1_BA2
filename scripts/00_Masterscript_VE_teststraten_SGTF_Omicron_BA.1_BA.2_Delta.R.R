@@ -1,6 +1,5 @@
-# Masterscript teststraten VE
-
-# VE SGTF
+### Masterscript teststraten VE
+### VE SGTF
 
 setwd("/PATH/SARS-CoV-2_Protection_SGTF_Delta_Omicron_BA1_BA2/")
 
@@ -8,55 +7,54 @@ setwd("/PATH/SARS-CoV-2_Protection_SGTF_Delta_Omicron_BA1_BA2/")
 lapply(c("rlang", "tidyverse","tidytable", "lubridate", "janitor", "cowplot", "VGAM", 
          "splines", "broom", "lmtest", "tableone", "readxl", "writexl"), require, character.only = TRUE)
 
-# Import data
+## Import data
 source(file = "scripts/01_import_data.R")
 
-# data cleaning 
+## data cleaning 
 ### Cohort Delta vs BA.1 ###
 source(file = "scripts/02_clean_cohort_A.R")
 ### Cohort BA.1 vs BA.2 ###
 source(file = "scripts/02_clean_cohort_B.R")
 
-
-
-
+## models
 # Model for Figure 2
 source(file = "scripts/03_model_VE.R") 
 
 # Model for Figure 3
 source(file = "scripts/03_model_VE_age.R")
 
-# In text only
 # VE compaired to primary vaccination
 source(file = "scripts/03_model_VE_immunestatus_booster_vs_basis.R")
+
 # age - vaccination and previous infection status interaction 
 source(file = "scripts/03_model_age_immuunstatus_interaction.R")
 
 # Supplementary analysis
 source(file = "scripts/03_model_VE_symptomatic.R") # zonder time since event
 
+## tables and figures
 # table 1
 source(file = "scripts/04_table_overview.R")
+
 # flowchart S1
 source(file = "scripts/04_table_flowchart.R")
+
 # Table S2
 source(file = "scripts/04_table_ppv.R")
-
 
 # Figure 1
 source(file = "scripts/05_figure_variants.R") # zonder time since event
 
 # Figure 2
 source(file = "scripts/05_figure_VE_time_overall.R") 
+
 # Figure 3
 source(file = "scripts/05_figure_VE_time_age_overall.R") 
-
 
 # Figure S2
 source(file = "scripts/05_figure_%SGTF_age_groups.R")
 
-
-# Save output
+## Save output
 PATH_figures <- "output/"
 
 # Figure 1 Cohorts
@@ -77,7 +75,6 @@ ggsave(file = str_c(PATH_figures, 'F3_VE_immuunstatus_age_tijd_', format(now(), 
        units = "mm",
        width = 180, height = 220)
 
-
 ggsave(file = str_c(PATH_figures, 'S2_VE_immuunstatus_leeftijd_overall_', format(now(), format = "%Y%m%d_%H%M"), ".tiff"), 
        plot = figuur_procent_omicron_leeftijd,
        width = 9, height = 6
@@ -91,7 +88,6 @@ write.xlsx(
     ".xlsx"
   )
 )
-
 
 # Data S1
 tabel_VE_overall %>%
@@ -132,7 +128,6 @@ tabel_VE_time_age_cohort1  %>%
       ".xlsx"
     )
   )
-
 
 # Table S2
 tabel_booster_vs_basis_cohort1 %>% 
