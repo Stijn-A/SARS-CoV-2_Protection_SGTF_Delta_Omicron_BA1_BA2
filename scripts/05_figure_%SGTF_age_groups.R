@@ -1,9 +1,4 @@
 
-
-# stukje opschonen
-#cohorts_breed <- c(12, 30, 60)
-
-
 tabel_S_dropout_age_tijd <- data_teststraten_lab %>% 
   mutate(Afspraak_start_datum = as.Date(Afspraak_start)) %>% 
   filter(`S result` %in% c("Detected", "Not detected") & 
@@ -11,7 +6,7 @@ tabel_S_dropout_age_tijd <- data_teststraten_lab %>%
            seq(as_date("2021-11-22"),as_date("2022-03-31"),1)) %>% 
   left_join(data_teststraten_all %>% select(Monsternummer, Leeftijd)) %>% 
   mutate(Leeftijd_breed = functie_cut_and_label(Leeftijd,
-                                                cohorts_breed,
+                                                cohorts_broad,
                                                 right = FALSE, sep = "-") %>% fct_explicit_na("Onbekend"),
   ) %>%
   count(Leeftijd_breed, Afspraak_start_datum,`S result`) %>% 
