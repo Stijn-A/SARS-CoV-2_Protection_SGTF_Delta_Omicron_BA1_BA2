@@ -5,7 +5,7 @@ setwd("/PATH/SARS-CoV-2_Protection_SGTF_Delta_Omicron_BA1_BA2/")
 
 ## packages
 lapply(c("rlang", "tidyverse","tidytable", "lubridate", "janitor", "cowplot", "VGAM", 
-         "splines", "broom", "lmtest", "tableone", "readxl", "writexl"), require, character.only = TRUE)
+         "splines", "broom", "lmtest", "tableone", "readxl", "writexl", "xlsx"), require, character.only = TRUE)
 
 ## Import data
 source(file = "scripts/01_import_data.R")
